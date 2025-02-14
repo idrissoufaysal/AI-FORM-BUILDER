@@ -1,3 +1,4 @@
+import { DialogDescription } from "@radix-ui/react-dialog";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
 import { CustomForm } from "@/types/form";
 
@@ -17,6 +18,7 @@ export default function Formfield({ open, onOpenChange, form }: FormfieldProps) 
         <DialogHeader>
           <DialogTitle className="flex justify-center capitalize">{form.title}</DialogTitle>
         </DialogHeader>
+        <DialogDescription></DialogDescription>
         <div id="form-content" className="space-y-4">
           {form.fields.map((field) => (
             <div key={field.id} className="space-y-2">

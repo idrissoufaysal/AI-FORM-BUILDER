@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { useFormStore } from '@/store/formStore';
-import { Plus, X } from 'lucide-react';
-import { CustomForm, FormField, FieldType } from '@/types/form';
+import React, { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { useFormStore } from "@/store/formStore";
+import { Plus, X } from "lucide-react";
+import { CustomForm, FormField, FieldType } from "@/types/form";
+import { DialogDescription } from "@radix-ui/react-dialog";
 
 interface UpdateFormDialogProps {
   open: boolean;
@@ -24,22 +30,20 @@ export const UpdateFormDialog: React.FC<UpdateFormDialogProps> = ({
   );
 
   // États pour gérer les champs du formulaire
-  const [title, setTitle] = useState(currentForm?.title || '');
+  const [title, setTitle] = useState(currentForm?.title || "");
   const [description, setDescription] = useState(
-    currentForm?.description || ''
+    currentForm?.description || ""
   );
-  const [fields, setFields] = useState<FormField[]>(
-    currentForm?.fields || []
-  );
+  const [fields, setFields] = useState<FormField[]>(currentForm?.fields || []);
 
   // Ajouter un nouveau champ
   const handleAddField = () => {
     const newField: FormField = {
       id: crypto.randomUUID(),
-      label: '',
-      type: 'text',
+      label: "",
+      type: "text",
       required: false,
-      placeholder: '',
+      placeholder: "",
     };
     setFields([...fields, newField]);
   };
@@ -72,7 +76,7 @@ export const UpdateFormDialog: React.FC<UpdateFormDialogProps> = ({
       updatedAt: new Date(),
     };
 
-    updateForm(currentForm.id,updatedForm);
+    updateForm(currentForm.id, updatedForm);
     onOpenChange(false);
   };
 
@@ -82,7 +86,7 @@ export const UpdateFormDialog: React.FC<UpdateFormDialogProps> = ({
         <DialogHeader>
           <DialogTitle>Modifier le formulaire</DialogTitle>
         </DialogHeader>
-
+        <DialogDescription></DialogDescription>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-4">
             <div>
@@ -95,7 +99,6 @@ export const UpdateFormDialog: React.FC<UpdateFormDialogProps> = ({
                 required
               />
             </div>
-
             <div>
               <Label htmlFor="description">Description</Label>
               <Input
