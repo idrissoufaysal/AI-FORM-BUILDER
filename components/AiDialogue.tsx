@@ -55,7 +55,7 @@ export const AiDialogue = () => {
     <div>
       <Button onClick={() => setOpenDialog(true)} variant={"outline"}>
         <BotMessageSquare className="text-blue-500" />
-        Generate Form with Ai
+        Générer par IA
       </Button>
       <Dialog open={openDialog} onOpenChange={setOpenDialog}>
         <DialogContent>
